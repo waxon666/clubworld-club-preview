@@ -7,7 +7,7 @@
 <title>C - Seat Map · ClubWorld</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Oswald:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Rye&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/tokens.css?v=6">
 <style>
 html, body { height: 100%; overflow: hidden; }
 body { background: var(--cw-deep); }
@@ -72,7 +72,7 @@ body { background: var(--cw-deep); }
 }
 .dot.on { background: #fff; box-shadow: 0 0 6px #fff; }
 
-.info h3 { font-family: var(--font-d); font-size: 14px; font-weight: 700; letter-spacing: -.02em; }
+.info h3 { font-family: var(--font-d); font-size: 14px; font-weight: 700; letter-spacing: -.02em; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .meta { font-size: 11px; color: var(--cw-dim); margin: 4px 0 8px; }
 .foot { display: flex; align-items: center; justify-content: space-between; }
 .open { font-size: 11px; font-weight: 700; color: var(--cw-green); }
@@ -149,8 +149,8 @@ body { background: var(--cw-deep); }
         <span class="dot on" style="--a:225deg"></span>
       </div>
       <div class="info">
-        <h3>Diamond NLH 100000</h3>
-        <div class="meta">10k / 20k · Buy-in 1,000,000 · Jackpot</div>
+        <h3>Diamond NLH 100000 <span class="jp-mark">Jackpot</span></h3>
+        <div class="meta">10k / 20k · Buy-in 1,000,000</div>
         <div class="foot">
           <span class="open">3 seats open</span>
           <button class="join" data-toast="Opening Diamond NLH…">Open</button>

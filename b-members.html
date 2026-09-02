@@ -7,7 +7,7 @@
 <title>B - Members · ClubWorld</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Oswald:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Rye&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/tokens.css?v=6">
 <style>
 html, body { height: 100%; overflow: hidden; }
 body { background: var(--cw-deep); }
@@ -81,7 +81,7 @@ body { background: var(--cw-deep); }
   padding: 14px; margin-bottom: 10px;
 }
 .t-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
-.t-name { font-family: var(--font-d); font-size: 15px; font-weight: 700; letter-spacing: -.02em; }
+.t-name { font-family: var(--font-d); font-size: 15px; font-weight: 700; letter-spacing: -.02em; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .players { font-size: 12px; font-weight: 700; color: var(--cw-green); }
 .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 12px; }
 .cell { background: var(--cw-deep); border-radius: 10px; padding: 8px; }
@@ -180,8 +180,8 @@ body { background: var(--cw-deep); }
     <article class="table" data-table data-game="nlh">
       <div class="t-head">
         <div>
-          <div class="t-name">Diamond NLH 100000</div>
-          <span class="tag nlh">NLH · Jackpot</span>
+          <div class="t-name">Diamond NLH 100000 <span class="jp-mark">Jackpot</span></div>
+          <span class="tag nlh">NLH</span>
         </div>
         <div class="players">5 / 8</div>
       </div>
