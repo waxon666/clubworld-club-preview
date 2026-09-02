@@ -7,7 +7,7 @@
 <title>C - Seat Map · ClubWorld</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Oswald:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Rye&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/tokens.css?v=7">
+<link rel="stylesheet" href="css/tokens.css?v=8">
 <style>
 html, body { height: 100%; overflow: hidden; }
 body { background: var(--cw-deep); }
@@ -29,7 +29,7 @@ body { background: var(--cw-deep); }
 .chips { font-family: var(--font-d); font-size: 13px; font-weight: 800; text-align: right; display: flex; flex-direction: column; align-items: flex-end; }
 .chips small { display: block; font-size: 9px; color: var(--cw-mute); font-weight: 600; }
 .chips .amt { display: inline-flex; align-items: center; gap: 5px; }
-.chips .chip-stack { --s: 18px; }
+.chips .chip-stack { width: 22px; height: 28px; }
 
 .sticky .jp-card { margin: 8px 0 0; }
 
@@ -115,7 +115,7 @@ body { background: var(--cw-deep); }
         <h1>Fish &amp; Whales</h1>
         <p>42 players · 7 tables · ID 123456</p>
       </div>
-      <div class="chips"><span class="amt"><span class="chip-stack" aria-hidden="true"><i></i><i></i><i></i></span>7.78M</span><small>Unlimited</small></div>
+      <div class="chips"><span class="amt"><img class="chip-stack" src="assets/chip-stack.png" alt="">7.78M</span><small>Unlimited</small></div>
     </div>
     <div class="jp-card">
       <img src="assets/jackpot-banner.png" alt="Bad Beat Jackpot">
