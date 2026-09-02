@@ -9,15 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tokens.css">
 <style>
-html { height: auto; }
+html { height: auto; overflow: visible; }
 body {
+  overflow: visible;
   background:
     radial-gradient(ellipse 70% 45% at 80% 0%, rgba(211,47,47,.08), transparent 50%),
     radial-gradient(ellipse 50% 40% at 8% 90%, rgba(48,184,162,.06), transparent 50%),
     var(--cw-deep);
   color: var(--cw-text);
 }
-.wrap { max-width: 1240px; margin: 0 auto; padding: 40px 24px 96px; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 40px 24px 120px; overflow: visible; }
 
 .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
 .brand img {
@@ -34,20 +35,41 @@ h1 {
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 28px;
+  gap: 36px;
   margin-top: 40px;
+  overflow: visible;
 }
+.col { overflow: visible; }
 .col h2 { font-family: var(--font-d); font-size: 22px; font-weight: 700; letter-spacing: -.02em; margin: 0 0 16px; }
 .num {
   display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .12em;
   text-transform: uppercase; color: var(--cw-red); margin-bottom: 8px;
 }
 
+.device-glow {
+  width: 302px;
+  margin: 0 auto;
+  padding: 20px 36px 80px;
+  box-sizing: content-box;
+  overflow: visible;
+}
+.device-frame {
+  border-radius: 40px;
+  box-shadow:
+    0 12px 24px rgba(0,0,0,.28),
+    0 28px 56px rgba(0,0,0,.38);
+}
 .device-slot {
   width: 302px;
   height: 632px;
-  margin: 0 auto;
   overflow: hidden;
+  border-radius: 40px;
+}
+.device-slot {
+  width: 302px;
+  height: 632px;
+  overflow: hidden;
+  border-radius: 40px;
 }
 .device {
   width: 418px;
@@ -55,7 +77,7 @@ h1 {
   padding: 14px;
   border-radius: 56px;
   background: linear-gradient(160deg, #2c2c32, #0e0e12);
-  box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 28px 60px rgba(0,0,0,.5);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
   transform: scale(.72);
   transform-origin: top left;
   overflow: hidden;
@@ -79,7 +101,7 @@ h1 {
 }
 
 .open {
-  display: inline-flex; margin: 16px 0 0;
+  display: inline-flex; margin: 0;
   color: var(--cw-teal); font-size: 13px; font-weight: 700; text-decoration: none;
 }
 .open:hover { color: #fff; }
@@ -103,8 +125,12 @@ h1 {
     <div class="col">
       <div class="num">Вариант 1</div>
       <h2>Как привыкли</h2>
-      <div class="device-slot">
-        <div class="device"><div class="screen"><iframe src="a-operator.html?v=3" title="Вариант 1"></iframe></div></div>
+      <div class="device-glow">
+        <div class="device-frame">
+          <div class="device-slot">
+            <div class="device"><div class="screen"><iframe src="a-operator.html?v=3" title="Вариант 1"></iframe></div></div>
+          </div>
+        </div>
       </div>
       <a class="open" href="a-operator.html?v=3">Открыть на весь экран</a>
     </div>
@@ -112,8 +138,12 @@ h1 {
     <div class="col">
       <div class="num">Вариант 2</div>
       <h2>Спокойнее и дороже</h2>
-      <div class="device-slot">
-        <div class="device"><div class="screen"><iframe src="b-members.html?v=3" title="Вариант 2"></iframe></div></div>
+      <div class="device-glow">
+        <div class="device-frame">
+          <div class="device-slot">
+            <div class="device"><div class="screen"><iframe src="b-members.html?v=3" title="Вариант 2"></iframe></div></div>
+          </div>
+        </div>
       </div>
       <a class="open" href="b-members.html?v=3">Открыть на весь экран</a>
     </div>
@@ -121,8 +151,12 @@ h1 {
     <div class="col">
       <div class="num">Вариант 3</div>
       <h2>Сразу видно стол</h2>
-      <div class="device-slot">
-        <div class="device"><div class="screen"><iframe src="c-seatmap.html?v=3" title="Вариант 3"></iframe></div></div>
+      <div class="device-glow">
+        <div class="device-frame">
+          <div class="device-slot">
+            <div class="device"><div class="screen"><iframe src="c-seatmap.html?v=3" title="Вариант 3"></iframe></div></div>
+          </div>
+        </div>
       </div>
       <a class="open" href="c-seatmap.html?v=3">Открыть на весь экран</a>
     </div>
