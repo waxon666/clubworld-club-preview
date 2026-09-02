@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>C — Seat Map · ClubWorld</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Oswald:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Rye&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<style>
+html, body { height: 100%; overflow: hidden; }
+body { background: var(--cw-deep); }
+.app {
+  width: 100%; height: 100%; max-width: 430px; margin: 0 auto;
+  background: var(--cw-deep);
+  display: flex; flex-direction: column; position: relative; overflow: hidden;
+}
+.status { height: 50px; padding: 12px 28px 0; display: flex; justify-content: space-between; font-family: var(--font-d); font-size: 15px; font-weight: 600; }
+.sticky {
+  background: rgba(8,13,27,.92); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--cw-line); padding: 6px 14px 10px;
+}
+.clubbar { display: grid; grid-template-columns: 40px 1fr auto; gap: 10px; align-items: center; }
+.av { width: 40px; height: 40px; border-radius: 22%; overflow: hidden; }
+.av .ph { width: 100%; height: 100%; font-size: 20px; }
+.clubbar h1 { font-family: var(--font-d); font-size: 15px; font-weight: 700; letter-spacing: -.02em; }
+.clubbar p { font-size: 10px; color: var(--cw-mute); }
+.chips { font-family: var(--font-d); font-size: 13px; font-weight: 800; text-align: right; }
+.chips small { display: block; font-size: 9px; color: var(--cw-mute); font-weight: 600; }
+
+.sticky .jp-card { margin: 8px 0 0; }
+
+.scroll { flex: 1; overflow-y: auto; padding: 12px 14px 88px; }
+.scroll::-webkit-scrollbar { display: none; }
+
+.seg { display: grid; grid-template-columns: 1fr 1fr 1fr; background: var(--cw-card); border-radius: 12px; padding: 3px; margin-bottom: 10px; }
+.seg button { height: 32px; border-radius: 10px; font-size: 12px; font-weight: 700; color: var(--cw-mute); }
+.seg button.is-on { background: var(--cw-elev); color: #fff; }
+
+.filters { display: flex; margin-bottom: 12px; }
+
+.card {
+  display: grid; grid-template-columns: 92px 1fr; gap: 12px;
+  background: var(--cw-card); border: 1px solid var(--cw-line); border-radius: 16px;
+  padding: 10px; margin-bottom: 10px; position: relative; overflow: hidden;
+}
+.card::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+}
+.card[data-game="nlh"]::before { background: var(--cw-green); }
+.card[data-game="plo"]::before { background: var(--cw-blue); }
+.card[data-game="mtt"]::before { background: var(--cw-gold); }
+.card[data-game="sng"]::before { background: #c4a574; }
+.card[data-game="aof"]::before { background: var(--cw-red); }
+
+.mini {
+  height: 86px; border-radius: 44px; overflow: hidden;
+  background: radial-gradient(ellipse at 50% 50%, #249a54, var(--cw-felt-edge));
+  box-shadow: inset 0 0 0 4px #173d28; position: relative;
+}
+.dot {
+  --a: 0deg;
+  --s: 10px;
+  position: absolute;
+  width: var(--s); height: var(--s); border-radius: 50%;
+  left: calc(50% + cos(var(--a)) * 38% - var(--s) / 2);
+  top: calc(50% + sin(var(--a)) * 32% - var(--s) / 2);
+  background: rgba(255,255,255,.18);
+}
+.dot.on { background: #fff; box-shadow: 0 0 6px #fff; }
+
+.info h3 { font-family: var(--font-d); font-size: 14px; font-weight: 700; letter-spacing: -.02em; }
+.meta { font-size: 11px; color: var(--cw-dim); margin: 4px 0 8px; }
+.foot { display: flex; align-items: center; justify-content: space-between; }
+.open { font-size: 11px; font-weight: 700; color: var(--cw-green); }
+.join {
+  height: 30px; padding: 0 12px; border-radius: 8px; background: var(--cw-red); color: #fff;
+  font-size: 11px; font-weight: 800; font-family: var(--font-d);
+}
+
+.fab {
+  position: absolute; right: 16px; bottom: 100px; z-index: 5;
+  height: 48px; padding: 0 18px; border-radius: 99px;
+  background: var(--cw-red); color: #fff; font-family: var(--font-d); font-weight: 800; font-size: 13px;
+  box-shadow: 0 10px 28px rgba(211,47,47,.4); display: flex; align-items: center; gap: 6px;
+}
+
+.tabbar {
+  height: 84px; background: rgba(8,13,27,.96); border-top: 1px solid var(--cw-line);
+  display: grid; grid-template-columns: repeat(5,1fr); padding: 8px 4px 22px;
+}
+.tab { display: grid; justify-items: center; gap: 3px; color: var(--cw-mute); font-size: 10px; font-weight: 600; }
+.tab svg { width: 22px; height: 22px; }
+.tab.is-on { color: var(--cw-teal); }
+
+.toast {
+  position: absolute; left: 50%; bottom: 160px; transform: translateX(-50%) translateY(12px);
+  background: var(--cw-elev); border: 1px solid var(--cw-line); padding: 10px 16px; border-radius: 99px;
+  font-size: 12px; font-weight: 600; opacity: 0; pointer-events: none; transition: .3s var(--ease); white-space: nowrap;
+}
+.toast.is-on { opacity: 1; transform: translateX(-50%) translateY(0); }
+.home { position: absolute; left: 50%; bottom: 8px; width: 120px; height: 4px; background: #fff; border-radius: 4px; transform: translateX(-50%); opacity: .85; }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="status"><span>9:41</span><span>⬤⬤⬤ 100%</span></div>
+  <div class="sticky">
+    <div class="clubbar">
+      <div class="av"><div class="ph">?</div></div>
+      <div>
+        <h1>Fish &amp; Whales</h1>
+        <p>42 players · 7 tables · ID 123456</p>
+      </div>
+      <div class="chips">7.78M<small>Unlimited</small></div>
+    </div>
+    <div class="jp-card">
+      <img src="assets/jackpot-banner.png" alt="Bad Beat Jackpot">
+    </div>
+  </div>
+
+  <div class="scroll">
+    <div class="seg" data-seg>
+      <button class="is-on" data-seg-key="cash">Cash</button>
+      <button data-seg-key="mtt">MTT</button>
+      <button data-seg-key="sng">SNG</button>
+    </div>
+    <div class="filters" data-filter-group>
+      <button class="mode-chip is-on" data-filter="all"><span>All</span></button>
+      <button class="mode-chip" data-filter="nlh"><span>NLH</span></button>
+      <button class="mode-chip" data-filter="plo"><span>PLO</span></button>
+      <button class="mode-chip" data-filter="aof"><span>AoF</span></button>
+      <button class="mode-chip" data-filter="mtt"><span>MTT</span></button>
+      <button class="mode-chip" data-filter="sng"><span>SNG</span></button>
+    </div>
+
+    <article class="card" data-game="nlh" data-kind="cash">
+      <div class="mini">
+        <span class="dot on" style="--a:-90deg"></span>
+        <span class="dot" style="--a:-45deg"></span>
+        <span class="dot on" style="--a:0deg"></span>
+        <span class="dot on" style="--a:45deg"></span>
+        <span class="dot" style="--a:90deg"></span>
+        <span class="dot on" style="--a:135deg"></span>
+        <span class="dot" style="--a:180deg"></span>
+        <span class="dot on" style="--a:225deg"></span>
+      </div>
+      <div class="info">
+        <h3>Diamond NLH 100000</h3>
+        <div class="meta">10k / 20k · Buy-in 1,000,000 · Jackpot</div>
+        <div class="foot">
+          <span class="open">3 seats open</span>
+          <button class="join" data-toast="Opening Diamond NLH…">Open</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-game="plo" data-kind="cash">
+      <div class="mini">
+        <span class="dot on" style="--a:-90deg"></span>
+        <span class="dot on" style="--a:-45deg"></span>
+        <span class="dot on" style="--a:0deg"></span>
+        <span class="dot" style="--a:45deg"></span>
+        <span class="dot on" style="--a:90deg"></span>
+        <span class="dot on" style="--a:135deg"></span>
+        <span class="dot on" style="--a:180deg"></span>
+        <span class="dot" style="--a:225deg"></span>
+      </div>
+      <div class="info">
+        <h3>Diamond PLO 50000</h3>
+        <div class="meta">5k / 10k · Buy-in 500,000</div>
+        <div class="foot">
+          <span class="open">2 seats open</span>
+          <button class="join" data-toast="Opening Diamond PLO…">Open</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-game="aof" data-kind="cash">
+      <div class="mini">
+        <span class="dot on" style="--a:-90deg"></span>
+        <span class="dot" style="--a:-30deg"></span>
+        <span class="dot on" style="--a:30deg"></span>
+        <span class="dot" style="--a:90deg"></span>
+        <span class="dot on" style="--a:150deg"></span>
+        <span class="dot" style="--a:210deg"></span>
+      </div>
+      <div class="info">
+        <h3>Midnight AoF</h3>
+        <div class="meta">2k / 4k · Buy-in 200,000</div>
+        <div class="foot">
+          <span class="open">3 seats open</span>
+          <button class="join" data-toast="Opening Midnight AoF…">Open</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-game="mtt" data-kind="mtt">
+      <div class="mini">
+        <span class="dot on" style="--a:-90deg"></span>
+        <span class="dot on" style="--a:-45deg"></span>
+        <span class="dot" style="--a:0deg"></span>
+        <span class="dot on" style="--a:45deg"></span>
+        <span class="dot on" style="--a:90deg"></span>
+        <span class="dot" style="--a:135deg"></span>
+        <span class="dot on" style="--a:180deg"></span>
+        <span class="dot on" style="--a:225deg"></span>
+      </div>
+      <div class="info">
+        <h3>Club MTT #12</h3>
+        <div class="meta">32 max · Late reg 12:40 · 50k GTD</div>
+        <div class="foot">
+          <span class="open">8 spots left</span>
+          <button class="join" data-toast="Registering MTT…">Reg</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-game="sng" data-kind="sng">
+      <div class="mini">
+        <span class="dot on" style="--a:-90deg"></span>
+        <span class="dot on" style="--a:-50deg"></span>
+        <span class="dot" style="--a:-10deg"></span>
+        <span class="dot on" style="--a:30deg"></span>
+        <span class="dot on" style="--a:70deg"></span>
+        <span class="dot on" style="--a:110deg"></span>
+        <span class="dot" style="--a:150deg"></span>
+        <span class="dot on" style="--a:190deg"></span>
+        <span class="dot on" style="--a:230deg"></span>
+      </div>
+      <div class="info">
+        <h3>Sunday SNG</h3>
+        <div class="meta">Starts when full · Buy-in 10,000</div>
+        <div class="foot">
+          <span class="open">2 seats to start</span>
+          <button class="join" data-toast="Joining SNG…">Seat</button>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <button class="fab" data-toast="Create table — next screen">＋ New Table</button>
+
+  <nav class="tabbar">
+    <button class="tab" data-nav><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16v10H4z"/><path d="m4 7 8 6 8-6"/></svg>Inbox</button>
+    <button class="tab is-on" data-nav><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="8" r="2.5"/><circle cx="15" cy="8" r="2.5"/><path d="M4 17c1-3 3-4 5-4s4 1 5 4"/><path d="M14 13c2 0 4 1 5 4"/></svg>Members</button>
+    <button class="tab" data-nav><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M9 12h6"/></svg>Counter</button>
+    <button class="tab" data-nav><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M8 9h8M8 13h6"/></svg>Data</button>
+    <button class="tab" data-nav><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3"/><path d="M6 18c1.5-3 3.5-4 6-4s4.5 1 6 4"/></svg>Admin</button>
+  </nav>
+  <div class="toast"></div>
+  <div class="home"></div>
+</div>
+<script src="js/club.js"></script>
+</body>
+</html>

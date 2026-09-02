@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Три варианта как может выглядеть ваш экран клуба</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<style>
+html { height: auto; }
+body {
+  background:
+    radial-gradient(ellipse 70% 45% at 80% 0%, rgba(211,47,47,.08), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 8% 90%, rgba(48,184,162,.06), transparent 50%),
+    var(--cw-deep);
+  color: var(--cw-text);
+}
+.wrap { max-width: 1240px; margin: 0 auto; padding: 40px 24px 96px; }
+
+.brand { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.brand img {
+  width: 44px; height: 44px; border-radius: 12px;
+  filter: drop-shadow(0 0 10px rgba(211,47,47,.28));
+}
+.brand span { font-family: var(--font-d); font-weight: 800; font-size: 20px; letter-spacing: -.03em; }
+
+h1 {
+  font-family: var(--font-d); font-size: clamp(28px, 4.4vw, 44px);
+  font-weight: 800; letter-spacing: -.04em; line-height: 1.08; max-width: 760px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 40px;
+}
+.col h2 { font-family: var(--font-d); font-size: 22px; font-weight: 700; letter-spacing: -.02em; margin: 0 0 16px; }
+.num {
+  display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--cw-red); margin-bottom: 8px;
+}
+
+.device-slot {
+  width: 302px;
+  height: 632px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.device {
+  width: 418px;
+  height: 876px;
+  padding: 14px;
+  border-radius: 56px;
+  background: linear-gradient(160deg, #2c2c32, #0e0e12);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 28px 60px rgba(0,0,0,.5);
+  transform: scale(.72);
+  transform-origin: top left;
+  overflow: hidden;
+}
+.screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 42px;
+  overflow: hidden;
+  background: var(--cw-deep);
+  isolation: isolate;
+  -webkit-mask-image: -webkit-radial-gradient(white, white);
+  mask-image: radial-gradient(white, white);
+}
+.screen iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: var(--cw-deep);
+}
+
+.open {
+  display: inline-flex; margin: 16px 0 0;
+  color: var(--cw-teal); font-size: 13px; font-weight: 700; text-decoration: none;
+}
+.open:hover { color: #fff; }
+
+@media (max-width: 1100px) {
+  .grid { grid-template-columns: 1fr; justify-items: center; }
+  .col { max-width: 360px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">
+    <img src="assets/logo.png" alt="ClubWorld">
+    <span>ClubWorld</span>
+  </div>
+
+  <h1>Три варианта как может выглядеть ваш экран клуба</h1>
+
+  <div class="grid">
+    <div class="col">
+      <div class="num">Вариант 1</div>
+      <h2>Как привыкли</h2>
+      <div class="device-slot">
+        <div class="device"><div class="screen"><iframe src="a-operator.html" title="Вариант 1"></iframe></div></div>
+      </div>
+      <a class="open" href="a-operator.html">Открыть на весь экран</a>
+    </div>
+
+    <div class="col">
+      <div class="num">Вариант 2</div>
+      <h2>Спокойнее и дороже</h2>
+      <div class="device-slot">
+        <div class="device"><div class="screen"><iframe src="b-members.html" title="Вариант 2"></iframe></div></div>
+      </div>
+      <a class="open" href="b-members.html">Открыть на весь экран</a>
+    </div>
+
+    <div class="col">
+      <div class="num">Вариант 3</div>
+      <h2>Сразу видно стол</h2>
+      <div class="device-slot">
+        <div class="device"><div class="screen"><iframe src="c-seatmap.html" title="Вариант 3"></iframe></div></div>
+      </div>
+      <a class="open" href="c-seatmap.html">Открыть на весь экран</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
