@@ -31,6 +31,13 @@ h1 {
   font-family: var(--font-d); font-size: clamp(28px, 4.4vw, 44px);
   font-weight: 800; letter-spacing: -.04em; line-height: 1.08; max-width: 760px;
 }
+.lead {
+  margin-top: 16px;
+  max-width: 620px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--cw-dim);
+}
 
 .grid {
   display: grid;
@@ -40,7 +47,14 @@ h1 {
   overflow: visible;
 }
 .col { overflow: visible; }
-.col h2 { font-family: var(--font-d); font-size: 22px; font-weight: 700; letter-spacing: -.02em; margin: 0 0 16px; }
+.col h2 { font-family: var(--font-d); font-size: 22px; font-weight: 700; letter-spacing: -.02em; margin: 0 0 8px; }
+.note {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--cw-mute);
+  margin: 0 0 16px;
+  min-height: 4.6em;
+}
 .num {
   display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .12em;
   text-transform: uppercase; color: var(--cw-red); margin-bottom: 8px;
@@ -58,12 +72,6 @@ h1 {
   box-shadow:
     0 12px 24px rgba(0,0,0,.28),
     0 28px 56px rgba(0,0,0,.38);
-}
-.device-slot {
-  width: 302px;
-  height: 632px;
-  overflow: hidden;
-  border-radius: 40px;
 }
 .device-slot {
   width: 302px;
@@ -120,11 +128,13 @@ h1 {
   </div>
 
   <h1>Три варианта как может выглядеть ваш экран клуба</h1>
+  <p class="lead">В каждом варианте акцент смещён на разные блоки. Экраны кликабельны: любой можно открыть отдельно по ссылке «Открыть на весь экран» под макетом.</p>
 
   <div class="grid">
     <div class="col">
       <div class="num">Вариант 1</div>
       <h2>Как привыкли</h2>
+      <p class="note">По сути тот же экран, что в исходнике, только с новым дизайном. Более мягкий и современный вид при той же палитре и общем стиле проекта.</p>
       <div class="device-glow">
         <div class="device-frame">
           <div class="device-slot">
@@ -138,6 +148,7 @@ h1 {
     <div class="col">
       <div class="num">Вариант 2</div>
       <h2>Спокойнее и дороже</h2>
+      <p class="note">Более простой вариант с акцентом на блоки, кнопки и цифры. Терминал профессионального покериста.</p>
       <div class="device-glow">
         <div class="device-frame">
           <div class="device-slot">
@@ -151,6 +162,7 @@ h1 {
     <div class="col">
       <div class="num">Вариант 3</div>
       <h2>Сразу видно стол</h2>
+      <p class="note">Самый аркадный дизайн. Акцент на командную игру: сразу видно, сколько людей за столом.</p>
       <div class="device-glow">
         <div class="device-frame">
           <div class="device-slot">
