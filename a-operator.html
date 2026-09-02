@@ -7,7 +7,7 @@
 <title>A - Operator · ClubWorld</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Oswald:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Rye&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/tokens.css?v=9">
+<link rel="stylesheet" href="css/tokens.css?v=10">
 <style>
 html, body { height: 100%; overflow: hidden; }
 body { background: var(--cw-deep); }
@@ -35,7 +35,7 @@ body { background: var(--cw-deep); }
 .scroll::-webkit-scrollbar { display: none; }
 
 .club {
-  display: grid; grid-template-columns: 56px 1fr; gap: 10px; align-items: start;
+  display: grid; grid-template-columns: 56px 1fr auto; gap: 10px 10px; align-items: start;
   margin-bottom: 10px;
 }
 .avatar {
@@ -58,10 +58,12 @@ body { background: var(--cw-deep); }
   display: inline-flex; align-items: center; gap: 5px;
   background: var(--cw-card); border: 1px solid var(--cw-line); border-radius: 8px;
   padding: 5px 8px; font-size: 11px; font-weight: 600; color: var(--cw-dim);
-  margin-left: auto; flex-shrink: 0;
+  white-space: nowrap;
+  align-self: start;
+  margin-top: 2px;
 }
 .club-row {
-  display: flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; gap: 12px;
   margin-top: 6px;
 }
 .meta { display: flex; gap: 12px; font-size: 11px; color: var(--cw-dim); min-width: 0; }
@@ -211,12 +213,12 @@ body { background: var(--cw-deep); }
               <b>7</b> Tables
             </span>
           </div>
-          <button class="contact">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-            Contact Club
-          </button>
         </div>
       </div>
+      <button class="contact">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        Contact Club
+      </button>
     </div>
 
     <div class="pills">
