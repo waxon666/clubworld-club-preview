@@ -7,7 +7,7 @@
 <title>A - Operator · ClubWorld</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Oswald:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Rye&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/tokens.css?v=8">
+<link rel="stylesheet" href="css/tokens.css?v=9">
 <style>
 html, body { height: 100%; overflow: hidden; }
 body { background: var(--cw-deep); }
@@ -58,8 +58,13 @@ body { background: var(--cw-deep); }
   display: inline-flex; align-items: center; gap: 5px;
   background: var(--cw-card); border: 1px solid var(--cw-line); border-radius: 8px;
   padding: 5px 8px; font-size: 11px; font-weight: 600; color: var(--cw-dim);
+  margin-left: auto; flex-shrink: 0;
 }
-.meta { display: flex; gap: 12px; margin-top: 6px; font-size: 11px; color: var(--cw-dim); }
+.club-row {
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 6px;
+}
+.meta { display: flex; gap: 12px; font-size: 11px; color: var(--cw-dim); min-width: 0; }
 .meta span { display: inline-flex; align-items: center; gap: 5px; }
 .meta svg { flex-shrink: 0; }
 .meta b { color: var(--cw-text); font-weight: 700; }
@@ -195,19 +200,21 @@ body { background: var(--cw-deep); }
         <div class="idrow">ID 123456
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>
         </div>
-        <button class="contact">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-          Contact Club
-        </button>
-        <div class="meta">
-          <span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.4"/><path d="M3.5 19c.8-3.2 2.8-5 5.5-5s4.7 1.8 5.5 5"/><path d="M14 15.2c1.8 0 3.4 1 4.2 3.8"/></svg>
-            <b>42</b> Players
-          </span>
-          <span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="13" rx="8.5" ry="5.5"/><circle cx="12" cy="7.5" r="1.6"/></svg>
-            <b>7</b> Tables
-          </span>
+        <div class="club-row">
+          <div class="meta">
+            <span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.4"/><path d="M3.5 19c.8-3.2 2.8-5 5.5-5s4.7 1.8 5.5 5"/><path d="M14 15.2c1.8 0 3.4 1 4.2 3.8"/></svg>
+              <b>42</b> Players
+            </span>
+            <span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="13" rx="8.5" ry="5.5"/><circle cx="12" cy="7.5" r="1.6"/></svg>
+              <b>7</b> Tables
+            </span>
+          </div>
+          <button class="contact">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+            Contact Club
+          </button>
         </div>
       </div>
     </div>
