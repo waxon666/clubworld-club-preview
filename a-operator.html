@@ -7,7 +7,7 @@
 <title>A - Operator · ClubWorld</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Oswald:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Rye&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/tokens.css?v=6">
+<link rel="stylesheet" href="css/tokens.css?v=7">
 <style>
 html, body { height: 100%; overflow: hidden; }
 body { background: var(--cw-deep); }
@@ -70,10 +70,6 @@ body { background: var(--cw-deep); }
   padding: 8px 10px; display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600;
 }
 .pill .dot { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; background: rgba(74,144,217,.15); color: var(--cw-blue); }
-.pill .chip {
-  width: 24px; height: 24px; flex-shrink: 0;
-  background: url("assets/chip-on.png") center / contain no-repeat;
-}
 
 .notice {
   background: var(--cw-card); border: 1px solid var(--cw-line); border-radius: 10px;
@@ -223,7 +219,7 @@ body { background: var(--cw-deep); }
         </span>
         Unlimited
       </div>
-      <div class="pill"><span class="chip"></span> 7,777,777</div>
+      <div class="pill"><span class="chip-stack" aria-hidden="true"><i></i><i></i><i></i></span> 7,777,777</div>
     </div>
 
     <div class="notice"><span>Notice</span> Welcome to Fish &amp; Whales. Jackpot is live tonight.</div>

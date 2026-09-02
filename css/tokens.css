@@ -163,3 +163,22 @@ img { display: block; max-width: 100%; }
   background-image: url("../assets/chip-on.png");
   box-shadow: none;
 }
+
+.chip-stack {
+  --s: 22px;
+  position: relative;
+  width: var(--s);
+  height: calc(var(--s) + 7px);
+  flex-shrink: 0;
+  display: inline-block;
+}
+.chip-stack i {
+  position: absolute;
+  left: 0;
+  width: var(--s);
+  height: var(--s);
+  background: url("../assets/chip-on.png") center / contain no-repeat;
+}
+.chip-stack i:nth-child(1) { bottom: 0; filter: brightness(.62); transform: scale(.9); transform-origin: center bottom; }
+.chip-stack i:nth-child(2) { bottom: 3px; filter: brightness(.82); transform: scale(.95); transform-origin: center bottom; }
+.chip-stack i:nth-child(3) { bottom: 7px; }
