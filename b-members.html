@@ -53,7 +53,8 @@ body { background: var(--cw-deep); }
   margin-top: 12px; display: flex; justify-content: space-between; align-items: center;
   font-size: 12px; color: var(--cw-dim);
 }
-.balance b { font-family: var(--font-d); font-size: 15px; color: var(--cw-text); }
+.balance b { font-family: var(--font-d); font-size: 15px; color: var(--cw-text); display: inline-flex; align-items: center; gap: 6px; }
+.balance b img { width: 22px; height: 22px; object-fit: contain; }
 
 .felt { overflow: hidden; }
 
@@ -154,7 +155,7 @@ body { background: var(--cw-deep); }
         <button class="ghost" data-toast="Share sheet">Share Club</button>
         <button class="solid" data-toast="Opening club chat">Contact Club</button>
       </div>
-      <div class="balance"><span>Club chips · Unlimited</span><b>7,777,777</b></div>
+      <div class="balance"><span>Club chips · Unlimited</span><b><img src="assets/chip-on.png" alt="">7,777,777</b></div>
     </section>
 
     <div class="jp-card">

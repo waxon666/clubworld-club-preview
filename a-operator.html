@@ -70,7 +70,10 @@ body { background: var(--cw-deep); }
   padding: 8px 10px; display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600;
 }
 .pill .dot { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; background: rgba(74,144,217,.15); color: var(--cw-blue); }
-.pill .chip { width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #fff, #e8d5a8 40%, #c9a227); }
+.pill .chip {
+  width: 24px; height: 24px; flex-shrink: 0;
+  background: url("assets/chip-on.png") center / contain no-repeat;
+}
 
 .notice {
   background: var(--cw-card); border: 1px solid var(--cw-line); border-radius: 10px;

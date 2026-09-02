@@ -26,8 +26,10 @@ body { background: var(--cw-deep); }
 .av .ph { width: 100%; height: 100%; font-size: 20px; }
 .clubbar h1 { font-family: var(--font-d); font-size: 15px; font-weight: 700; letter-spacing: -.02em; }
 .clubbar p { font-size: 10px; color: var(--cw-mute); }
-.chips { font-family: var(--font-d); font-size: 13px; font-weight: 800; text-align: right; }
+.chips { font-family: var(--font-d); font-size: 13px; font-weight: 800; text-align: right; display: flex; flex-direction: column; align-items: flex-end; }
 .chips small { display: block; font-size: 9px; color: var(--cw-mute); font-weight: 600; }
+.chips .amt { display: inline-flex; align-items: center; gap: 5px; }
+.chips .amt img { width: 18px; height: 18px; object-fit: contain; }
 
 .sticky .jp-card { margin: 8px 0 0; }
 
@@ -113,7 +115,7 @@ body { background: var(--cw-deep); }
         <h1>Fish &amp; Whales</h1>
         <p>42 players · 7 tables · ID 123456</p>
       </div>
-      <div class="chips">7.78M<small>Unlimited</small></div>
+      <div class="chips"><span class="amt"><img src="assets/chip-on.png" alt="">7.78M</span><small>Unlimited</small></div>
     </div>
     <div class="jp-card">
       <img src="assets/jackpot-banner.png" alt="Bad Beat Jackpot">
